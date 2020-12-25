@@ -1,0 +1,183 @@
+<!doctype html>
+<html>
+    {{> head roomDetail}}
+
+    <body>
+        <div id="page-wrapper">
+            <!-- Navbar -->
+            {{> header auth }}
+            <!-- Nav Sidebar -->
+            {{> nav-panel auth }}
+            <!-- Login/Registration -->
+            {{> modal }}
+            <!-- Listing Header -->
+            <div class="listing-header">
+                <div id="listing-title">
+                    {{#if auth.profile.admin}}
+                    <div class="container">
+                        <form id="title-form" action="/rooms/update" method="POST">
+                            <input name="roomId" type="text" value="{{roomDetail._id}}" style="display: none;">
+                            <div class="row">
+                                <div class="col-12">
+                                    <input name="title" type="text" placeholder="Title" value="{{ roomDetail.title }}">
+                                    <button type="submit" class="blue-btn">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    {{else}}
+                    <h2>{{ roomDetail.title }}</h2>
+                    {{/if}}
+                </div>
+                {{#if auth.profile.admin}}
+                <br />
+                {{/if}}
+				<ul class="menu">
+                    {{#unless auth.profile.admin}}
+					<li><i class="fas fa-star"></i><a href="#"> {{ roomDetail.rating }}</a></li>
+                    {{/unless}}
+					<li>
+                        {{#if auth.profile.admin}}
+                        <form id="location-form" action="/rooms/update" method="POST">
+                            <input name="roomId" type="text" value="{{roomDetail._id}}" style="display: none;">
+                            <select name="location">
+                                <option value="Toronto">Toronto</option>
+                                <option value="Vancouver">Vancouver</option>
+                                <option value="Montreal">Montreal</option>
+                                <option value="Calgary">Calgary</option>
+                                <option value="Ottawa">Ottawa</option>
+                            </select>
+                            <button type="submit" class="blue-btn">Submit</button>
+                        </form>
+                        {{else}}
+                        <i class="fas fa-map-marker-alt"></i>
+                        <a href="#"> {{ roomDetail.location }}</a>
+                        {{/if}}
+                    </li>
+                    {{#unless auth.profile.admin}}
+					<li><a class="favorite" href="#"><i class="far fa-heart"></i> Favorite</a></li>
+                    {{/unless}}
+				</ul>
+			</div>
+            <!-- Listing Content -->
+            <div id="overview-wrapper" class="container">
+                <div class="row gtr-200">
+                    <div class="col-7 col-12-small">
+
+                        <!-- Images -->
+                        <div class="listing-images">
+                            <div class="slideshow">
+                                {{#each roomDetail.photos}}
+                                <img class="slide" src="{{ this }}" alt="{{ description }}">
+                                {{/each}}
+                                <div id="prev-slide" class="arrow">&#10094;</div>
+                                <div class="dot-bar">
+                                    {{#each roomDetail.photos}}
+                                    <span class="dot"></span>
+                                    {{/each}}
+                                </div>
+                                {{#if auth.profile.admin}}
+                                <form id="photo-form" action="/rooms/update" method="POST">
+                                    <input name="roomId" type="text" value="{{roomDetail._id}}" style="display: none;">
+                                    <input name="photoSrc" type="text" style="display: none;">
+                                    <button type="submit">Delete Photo</button>
+                                </form>
+                                {{/if}}
+                                <div id="next-slide" class="arrow">&#10095;</div>
+                            </div>
+                        </div>
+
+                        <form id="book-now" class="form container" action="/book" method="POST">
+                            <label>Check-in date</label>
+                            <input type="date" name="checkIn" required>
+                            <label>Checkout date</label>
+                            <input type="date" name="checkOut" required>
+                            <input name="roomId" type="text" value="{{roomDetail._id}}" style="display: none;">
+                            <hr />
+                            <div class="price-list container">
+                                <div class="row aln-center">
+                                    <div class="col-8">
+                                        <span>Base cost (per night)</span>
+                                    </div>
+                                    <div class="cost col-4">
+                                        $<span id="base-cost">{{ roomDetail.price }}</span>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-8">
+                                        <span>Accommodation</span>
+                                    </div>
+                                    <div id="accommodation-cost" class="cost col-4"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-8">
+                                        <span>Cleaning fee</span>
+                                    </div>
+                                    <div id="cleaning-cost" class="cost col-4"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-8">
+                                        <span>Service fee</span>
+                                    </div>
+                                    <div id="service-cost" class="cost col-4"></div>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="price-list container">
+                                <div class="row">
+                                    <div class="col-8">
+                                        <h4>Total</h4>
+                                    </div>
+                                    <div id="total-cost" class="cost col-4"></div>
+                                </div>
+                                <div class="row">
+                                    <em>*You won't be charged yet</em>
+                                </div>
+                            </div>
+                            {{#if auth.isAuthenticated}}
+                            <button type="submit">Book now</button>
+                            {{else}}
+                            <div>Please log in to your account to book it now.</div>
+                            {{/if}}
+                        </form>
+
+                    </div>
+                    <div class="col-5 col-12-small">
+
+                        <!-- Content -->
+                        <div class="listing-overview">
+                            <section>
+                                <!-- Description -->
+                                {{#if auth.profile.admin}}
+                                <form id="description-form" action="/rooms/update" method="POST">
+                                    <input name="roomId" type="text" value="{{roomDetail._id}}" style="display: none;">
+                                    <textarea type="text" name="description" spellcheck="true" placeholder="Description" required> {{{ roomDetail.description }}}</textarea>
+                                    <button type="submit" class="blue-btn">Submit</button>
+                                </form>
+                                {{else}}
+                                <div class="listing-description">
+									<div class="container form">
+                                        {{{ roomDetail.description }}}
+									</div>
+								</div>
+                                {{/if}}
+                            </section>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer -->
+            {{> footer }}
+            <!-- Scripts -->
+            {{> scripts }}
+            {{#if auth.profile.admin}}
+            <script src="assets/js/edit-listing.js"></script>
+            <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+            <script>tinymce.init({selector:'textarea'});</script>
+            {{/if}}
+        </div>
+    </body>
+</html>

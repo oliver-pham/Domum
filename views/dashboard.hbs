@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+    {{> head title="Dashboard" }}
+
+    <body>
+        <div id="page-wrapper">
+            <!-- Navbar -->
+            {{> header auth }}
+            <!-- Nav Sidebar -->
+            {{> nav-panel auth }}
+            <!-- Login/Registration -->
+            {{> modal }}
+            <!-- Thankyou Message -->
+            <div id="dashboard-header-wrapper">
+                <div class="container">
+                    {{#if auth.profile.admin}}
+                    <div class="row">
+                        <div class="form col-4 col-12-medium">
+                            <h3>Upload a new listing</h3>
+                            <form id="host-registration" action="/rooms/create" method="POST" enctype="multipart/form-data">
+                                <div class="error" id="listing-error" style="display: block;">{{ message }}</div>
+                                <label>Title</label>
+                                <input type="text" name="title" spellcheck="true" placeholder="Title" required>
+                                <label>Description</label>
+                                <textarea id="description" type="text" name="description" spellcheck="true" placeholder="Description" required> </textarea>
+                                <label>Location</label>
+                                <select name="location">
+                                    <option value="Toronto">Toronto</option>
+                                    <option value="Vancouver">Vancouver</option>
+                                    <option value="Montreal">Montreal</option>
+                                    <option value="Calgary">Calgary</option>
+                                    <option value="Ottawa">Ottawa</option>
+                                </select>
+                                <label>Price</label>
+                                <input type="text" name="price" placeholder="Price" required>
+                                <label style="display: inline;">Image File</label>
+                                <label class="switch">
+                                    <input id="photo-switch" name="isURL" type="checkbox">
+                                    <span class="slider round"></span>
+                                </label>
+                                <label style="display: inline;">Image link</label>
+                                <div id="photo-file">
+                                    <input type="file" name="photo" accept="image/*" multiple>
+                                </div>
+                                <div id="photo-link" style="display: none;">
+                                    <input type="url" name="photoSource" placeholder="https://example.com" pattern="https://.*">
+                                </div>
+                                <div id="uploaded-photo" class="grid-container"></div>
+                                <button class="blue-btn" type="submit">Upload</button>
+                            </form>
+                        </div>
+                        <div class="col-8 col-12-medium">
+                            <!-- Room Listings -->
+                            {{> room-listing rooms}}
+                        </div>
+                    </div>
+                    {{else}}
+                    <div class="row">
+                        <div class="form col-4 col-12-medium">
+                            <section>
+                                <h2>Welcome, {{ auth.profile.fname }}!</h2>
+                                <h2>Check your recent bookings</h2>
+                            </section>
+                            <footer>
+                                <a href="#" class="image featured">
+                                    <img src="https://opendoodles.s3-us-west-1.amazonaws.com/selfie.svg" alt="A girl skating calmly" />
+                                </a>
+                            </footer>
+                        </div>
+                        <div class="col-8 col-12-medium">
+                            <!-- Room Listings -->
+                            {{> room-listing rooms}}
+                        </div>
+                    </div>
+                    {{/if}}
+                </div>
+            </div>
+            <!-- Footer -->
+            {{> footer }}
+            <!-- Scripts -->
+            {{> scripts }}
+            {{#if auth.profile.admin}}
+            <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+            <script>tinymce.init({selector:'textarea'});</script>
+            {{/if}}
+        </div>
+    </body>
+</html>

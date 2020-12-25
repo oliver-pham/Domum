@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+    {{> head title="Dashboard" }}
+
+    <body>
+        <div id="page-wrapper">
+            <!-- Navbar -->
+            {{> header }}
+            <!-- Nav Sidebar -->
+            {{> nav-panel }}
+            <!-- Login Form -->
+            <div id="login" class="form">
+
+                <!-- Sign In -->
+                <form id="login-form" action="/login" method="POST">
+                    <label>Email</label>
+                    <input id="login-email" name="email" type="email" autocorrect="false" autocomplete="email" spellcheck="false"
+                        placeholder="Email address" required>
+                    <label>Password</label>
+                    <input id="login-password" name="password" type="password" autocapitalize="off" autocomplete="new-password" autocorrect="false"
+                        placeholder="Password" required>
+                    <div class="error" id="login-error" style="display: block;">{{ message }}</div>
+                    <button class="button" type="submit">Sign in</button>
+                </form>
+                <hr>
+                <div class="row aln-center">
+                    <span>Sign in with</span>
+                </div>
+                <div class="row aln-center">
+
+                    <section class="widget contact">
+                        <ul>
+                            <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a>
+                            </li>
+                            <li><a href="#" class="icon brands fa-facebook-f"><span
+                                        class="label">Facebook</span></a></li>
+                            <li><a href="#" class="icon brands fa-instagram"><span
+                                        class="label">Instagram</span></a></li>
+                        </ul>
+                    </section>
+
+                </div>
+
+                <span>Don't have an account? <a href="/registration" class="registration-btn">Sign up</a></span>
+
+            </div>
+            <!-- Footer -->
+            {{> footer }}
+            <!-- Scripts -->
+            {{> scripts }}
+        </div>
+    </body>
+</html>

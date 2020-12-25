@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+    {{> head title="Dashboard" }}
+
+    <body>
+        <div id="page-wrapper">
+            <!-- Navbar -->
+            {{> header }}
+            <!-- Nav Sidebar -->
+            {{> nav-panel }}
+            <!-- Registration Form -->
+            <div id="registration" class="form">
+
+                <!-- Sign up -->
+                <form id="registration-form" action="/register" method="POST">
+                    <div id="email">
+                        <label>Email</label>
+                        <input id="register-email" name="email" type="email" autocorrect="false" autocomplete="email" spellcheck="false"
+                            placeholder="Email address" required>
+                        <div class="error" id="register-email-error">Invalid email address.</div>
+                    </div>
+                    <div id="password">
+                        <label>Password</label>
+                        <input id="register-password" name="password" type="password" autocapitalize="off" autocomplete="new-password" autocorrect="false"
+                        placeholder="Password" required>
+                        <div class="error" id="register-password-length-error">Password must be between 6 and 15 characters.</div>
+                        <div class="error" id="register-password-character-error">Password must only contain letters, numbers, and underscores only.</div>
+                    </div>
+                    <div class="col-6 col-12-medium">
+                        <label>First Name</label>
+                        <input name="fname" type="text" autocapitalize="words" autocomplete="name" autocorrect="false"
+                            spellcheck="false" placeholder="First name" required>
+                    </div>
+                    <div class="col-6 col-12-medium">
+                        <label>Last Name</label>
+                        <input name="lname" type="text" autocapitalize="words" autocomplete="given-name"
+                            autocorrect="false" spellcheck="false" placeholder="Last name" required>
+                    </div>
+                    <label>Birthday</label>
+                    <div id="birthday" class="container">
+                        <div class="row">
+                            <div class="col-4 col-12-medium">
+                                <select id="birthday-month" name="month"></select>
+                            </div>
+                            <div class="col-4 col-12-medium">
+                                <select id="birthday-date" name="date"></select>
+                            </div>
+                            <div class="col-4 col-12-medium">
+                                <select id="birthday-year" name="year"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <p>We'll send you marketing promotions, special offers, inspiration, and policy
+                        updates
+                        via email.</p>
+                    <button class="button" type="submit" value="Submit">Sign up</button>
+                </form>
+                <hr>
+                <div class="row aln-center">
+                    <span>Sign up with</span>
+                </div>
+                <div class="row aln-center">
+
+                    <section class="widget contact">
+                        <ul>
+                            <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a>
+                            </li>
+                            <li><a href="#" class="icon brands fa-facebook-f"><span
+                                        class="label">Facebook</span></a></li>
+                            <li><a href="#" class="icon brands fa-instagram"><span
+                                        class="label">Instagram</span></a></li>
+                        </ul>
+                    </section>
+
+                </div>
+
+                <span>Already have an account? <a href="/login" class="login-btn">Sign in</a></span>
+
+            </div>
+            <!-- Footer -->
+            {{> footer }}
+            <!-- Scripts -->
+            {{> scripts }}
+        </div>
+    </body>
+</html>

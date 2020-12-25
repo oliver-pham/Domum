@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+    {{> head title="Home" }}
+
+    <body>
+        <div id="page-wrapper">
+            <!-- Navbar -->
+            {{> header auth }}
+            <!-- Nav Sidebar -->
+            {{> nav-panel auth }}
+            <!-- Login/Registration -->
+            {{> modal }}
+            <!-- Banner -->
+            {{> banner }}
+            <!-- Feature Search -->
+            {{> features }}
+            <!-- Main -->
+            <div id="main-wrapper">
+                <div class="container">
+                    <div class="row gtr-200">
+                        <div class="col-4 col-12-small">
+
+                            <!-- Sidebar -->
+                            <div id="sidebar">
+                                <section class="widget thumbnails">
+                                    <div class="grid">
+                                        <div class="row gtr-50">
+                                            <a href="#" class="image featured"><img
+                                                    src="https://opendoodles.s3-us-west-1.amazonaws.com/loving.svg"
+                                                    alt="" /></a>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+
+                        </div>
+                        <div class="col-8 col-12-small">
+
+                            <!-- Content -->
+                            <div id="content">
+                                <section>
+                                    <h2>What is Domum?</h2>
+                                    <p>At <strong>Domum</strong>, we connect our customers to our accommodation providers,
+                                        who'd like to share their living space with others.
+                                        <p>We understand the critical situation that we're all facing. However, we've been
+                                            making every effort to ensure the safety and well-being of our customers.</p>
+                                        <h2>What is hosting?</h2>
+                                        <p>
+                                            You can earn extra money by sharing your home, activity, or both with others.
+                                            We connect you to qualified consumers by posting your listing on our platform
+                                            and recommending it to others.
+                                        </p>
+                                </section>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Promo Banner -->
+            <div id="promo-banner-wrapper">
+                <div class="container">
+                    <div class="row gtr-200">
+                        <div class="col-6 col-12-small">
+                            <!-- Card -->
+                            {{> card
+                                imgSrc="images/promo-1.svg"
+                                imgAlt="Washing hands"
+                                title="Free Sanitizers & Masks"
+                                subtitle="We provide safety equipment at no cost to all of our customers and hosts in the
+                                    hope of you following the COVID-19 guidelines."
+                                read-more="true"
+                            }}
+                        </div>
+                        <div class="col-6 col-12-small">
+                            <!-- Card -->
+                            {{> card
+                                imgSrc="images/promo-2.svg"
+                                imgAlt="Relaxing on a bed"
+                                title="Free stays in Specific Locations"
+                                subtitle='To alleviate the financial impact of COVID-19, we offer free accommodation to all
+                                    of our customers who stay in specific locations'
+                                read-more="true"
+                            }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer -->
+            {{> footer }}
+            <!-- Scripts -->
+            {{> scripts }}
+        </div>
+    </body>
+</html>

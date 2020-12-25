@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+    {{> head title="Explore" }}
+
+    <body>
+        <div id="page-wrapper">
+            <!-- Navbar -->
+            {{> header auth }}
+            <!-- Nav Sidebar -->
+            {{> nav-panel auth }}
+            <!-- Login/Registration -->
+            {{> modal }}
+            <!-- Banner -->
+            {{> banner }}
+            <!-- Room Listings -->
+            {{> room-listing rooms}}
+            <!-- Footer -->
+            {{> footer }}
+            <!-- Scripts -->
+            {{> scripts }}
+        </div>
+    </body>
+</html>

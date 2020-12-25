@@ -1,0 +1,52 @@
+<!-- Room Listings -->
+<div id="listing-wrapper">
+    <div class="container">
+        <div class="grid-container">
+        {{#each this}}
+            <!-- Box -->
+            <section class="box listing">
+                <a href="/rooms/{{ _id }}" class="image featured"><img src="{{ photos.[0] }}" /></a>
+                <div class="inner">
+                    <header>
+                        <a href="/rooms/{{ _id }}">
+                            <h3 class="text-overflow-ellipse">{{ title }}</h3>
+                        </a>
+                    </header>
+                    <article class="container">
+                        <div class="row aln-center">
+                            <a href="#"><i class="fas fa-star"></i> {{ rating }}</a>
+                        </div>
+                        <div class="row aln-center">
+                            <span>${{ price }} CAD/night</span>
+                        </div>
+                        <div class="row aln-center">
+                            <span><i class="fas fa-map-marker-alt"></i> {{ location }}</span>
+                        </div>
+                    </article>
+                    {{#if @root.auth.profile.admin}}
+                    <footer>
+                        <form action="/rooms/delete" method="POST">
+                            <input name="roomId" type="text" value="{{this._id}}" style="display: none;">
+                            <button type="submit" class="button">Remove</button>
+                        </form>
+                    </footer>
+                    {{/if}}
+                </div>
+                {{#if @root.hasBookings}}
+                <div class="container">
+                    <div class="date row aln-center">
+                        <div class="col-6 col-12-medium">
+                            Check-in: {{checkInDate}}
+                        </div>
+                        <div class="col-6 col-12-medium">
+                            Checkout: {{checkOutDate}}
+                        </div>
+                    </div>
+                {{/if}}
+            </section>
+        {{else}}
+        <h2 style="text-align: center;">Oops... There are currently no listings. Try again later!</h2>
+        {{/each}}
+        </div>
+    </div>
+</div>

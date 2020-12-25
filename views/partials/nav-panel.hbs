@@ -1,0 +1,22 @@
+<!-- Nav Toggle -->
+<div id="navToggle">
+    <a href="#navPanel" class="toggle"><i class="fas fa-bars"></i></a>
+</div>
+
+<!-- Nav Panel -->
+<div id="navPanel">
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/explore">Explore</a></li>
+            <li><a href="/become-a-host">Become a host</a></li>
+            {{#if isAuthenticated}}
+            <li><a href="/logout" class="logout-btn">Log out</a></li>
+            <li><a href="/dashboard"><i class="fas fa-user-circle"></i> {{ profile.fname }} {{ profile.lname }}</a></li>
+            {{else}}
+            <li><a href="/registration" class="registration-btn">Sign up</a></li>
+            <li><a href="/login" class="login-btn">Sign in</a></li>
+            {{/if}}
+        </ul>
+    </nav>
+</div>

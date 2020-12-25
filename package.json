@@ -1,0 +1,40 @@
+{
+  "name": "domum",
+  "version": "1.0.0",
+  "description": "Vacation rental online marketplace",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --recursive",
+    "dev": "nodemon --ignore sessions/ src/index",
+    "start": "node src/index"
+  },
+  "author": "Phu Thong Pham",
+  "license": "MIT",
+  "dependencies": {
+    "@sendgrid/mail": "^7.4.0",
+    "bcrypt": "^5.0.0",
+    "bluebird": "^3.7.2",
+    "body-parser": "^1.19.0",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "chai-http": "^4.3.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.1.0",
+    "express-session": "^1.17.1",
+    "helmet": "^4.2.0",
+    "mongoose": "^5.10.14",
+    "multer": "^1.4.2",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "sendgrid": "^5.2.3",
+    "session-file-store": "^1.5.0",
+    "uuid": "^8.3.1"
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0",
+    "mocha": "^8.2.1",
+    "nodemon": "^2.0.6"
+  }
+}

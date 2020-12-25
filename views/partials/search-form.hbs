@@ -1,0 +1,16 @@
+<h2>Book Your Place</h2>
+<form id="booking-search" action="/rooms/find" method="POST">
+    <label>Location</label>
+    <select name="location">
+        <option value="Toronto">Toronto</option>
+        <option value="Vancouver">Vancouver</option>
+        <option value="Montreal">Montreal</option>
+        <option value="Calgary">Calgary</option>
+        <option value="Ottawa">Ottawa</option>
+    </select>
+    <label>Check-in</label>
+    <input type="date" name="checkIn">
+    <label>Checkout</label>
+    <input type="date" name="checkOut">
+    <button class="button" type="submit">Search</button>
+</form>

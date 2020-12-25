@@ -1,0 +1,27 @@
+<!-- Header -->
+<div id="header-wrapper">
+    <header id="header" class="container">
+
+        <!-- Logo -->
+        <div id="logo">
+            <a href="/"><img src="/images/domum.png" alt="A logo that has red text that says 'Domum' and a torii above it"></a>
+        </div>
+
+        <!-- Nav -->
+        <nav id="nav">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/explore">Explore</a></li>
+                <li><a href="/become-a-host">Become a host</a></li>
+                {{#if isAuthenticated}}
+                <li><a href="/dashboard"><i class="fas fa-user-circle"></i> {{ profile.fname }} {{ profile.lname }}</a></li>
+                <li><a href="/logout" class="logout-btn">Log out</a></li>
+                {{else}}
+                <li><a href="/registration" class="registration-btn">Sign up</a></li>
+                <li><a href="/login" class="login-btn">Sign in</a></li>
+                {{/if}}
+            </ul>
+        </nav>
+
+    </header>
+</div>
