@@ -1,6 +1,5 @@
 <div align="center">
     <img src="src/../views/images/domum.png">
-    <h1>Domum</h1>
     <h2>Vacation Rental Online Marketplace</h2>
 </div>
 <div align="center">
@@ -9,15 +8,30 @@
 
 ## About
 
-This is an AirBnB clone built for educational purposes. It is built with Node, ExpressJS, Handlebars, and MongoDB. The user interface is built with HTML, CSS, and jQuery. Testing frameworks include Mocha and Chai. Check out the deployed version at (_insert link_).
+This is an AirBnB clone built for educational purposes. Check out the deployed version at https://oliver-pham-domum.herokuapp.com/.  
+It is built with:
+- Backend: [Node](https://nodejs.org/en/), [Express](https://expressjs.com)
+- Template engine: [Handlebars](https://handlebarsjs.com)
+- DBMS: [MongoDB](https://www.mongodb.com)
+- Frontend: HTML, CSS, [jQuery](https://jquery.com)
+- Testing frameworks: [Mocha](https://mochajs.org), [Chai](https://www.chaijs.com).
 
-(_Some gifs_)
-
-(_Some snapshots_)
+<div align="center">
+    <img src="demo/demo.gif">
+    <br />
+    <img src="demo/snapshot-1.png">
+    <img src="demo/snapshot-2.png">
+    <img src="demo/snapshot-3.png">
+</div>
 
 ## Features
 
 - User Authentication & Authorization
+- Upload/Edit/Remove a listing
+- Upload/Remove any images of a listing 
+- Search for particular listings by location
+- Book a room and see the details of the booking
+- Get email notification for every booking
 
 ## Contributing
 
